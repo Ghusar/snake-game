@@ -1,0 +1,25 @@
+#can{
+	border : 1px solid black;
+	background:linear-gradient(red,yellow);
+	box-shadow:10px 10px 5px #888888;
+	display:block;
+	float:left;
+	
+}
+
+#scorecard{
+	position:relative;
+	top:30%;
+	left:50%;
+	width:400px;
+	height : 100px;
+	margin: 20px;
+	background-color:yellow;
+	text-align:center;
+}
+
+#scorecard > p{
+	font-family:Tahoma;
+	font-size:70px;
+	color:red;
+}
