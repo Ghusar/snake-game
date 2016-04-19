@@ -8,7 +8,7 @@
 	
 </head>
 
-<body onload="setup()">
+<body >
 	<h3> Snake Game </h3>
 	<canvas id = "can" width = "300" height="500" >
 	</canvas>
@@ -16,6 +16,13 @@
 	<div id ="scorecard" >
 		<p id="score"></p>
 	</div>
+	
+	<div id="control">
+		<p><input type = "button" id ="start" value="start" onclick = "setup()"/></p>
+		<p><input type = "button" id="resume" value = "resume" onclick = "resume()"/></p>
+		<p><input type = "button" id ="pause" value = "pause" onclick = "pause()" /> </p>
+	</div>
+	
 </body>
 
 </html>
