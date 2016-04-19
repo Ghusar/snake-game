@@ -4,8 +4,9 @@ function snake(x,y){
 }
 function setup(){
 	
-	
+	directionind = 3;
 	//alert("hello");
+	sp = 100;
 	sc = 0;
 	s = document.getElementById("score");
 	s.innerHTML = sc;
@@ -27,11 +28,27 @@ function setup(){
 	goal();
 	
 //alert("go");
-	moving = setInterval(move_right,300);
+	moving = setInterval(move_right,sp);
 	
 	
 	
 	
+}
+
+function resume(){
+	if(directionind == 1)
+		moving = setInterval(moveup,sp);
+	if(directionind == 2)
+		moving = setInterval(movedown,sp);
+	if(directionind == 3)
+		moving = setInterval(move_right,sp);
+	if(directionind == 4)
+		moving = setInterval(moveleft,sp);
+	
+}
+
+function pause(){
+	clearInterval(moving);
 }
 
 
@@ -43,6 +60,7 @@ function setvisible(){
 
 
 function move_right(){
+	directionind = 3;
 	cont.clearRect(list[0].x,list[0].y,10,10);
 	
 	var px = list[0].x;
@@ -62,6 +80,7 @@ function move_right(){
 function moveall(px,py){
 	
 	for(var l = 1; l < list.length ;l++){
+			if(list[l].x!=goal_x||list[l].y != goal_y)
 			cont.clearRect(list[l].x,list[l].y,10,10);
 			cont.fillRect(px,py,10,10);
 			
@@ -84,39 +103,43 @@ function check_it(){
 		alert("finish");
 	}
 	else{
-	if(list[0].x+10==goal_x&&list[0].y ==goal_y){
+	if((list[0].x==goal_x&&list[0].y) ==goal_y&&directionind==3){
 		//alert("aya");
 		insertfirst(new snake(list[0].x+10,list[0].y));
+			
 			cont.fillRect(list[0].x,list[0].y,10,10);
 			sc = sc + 10;
-	s.innerHTML = sc;
+			s.innerHTML = sc;
 			goal();
 
 	}
-	else if(list[0].x-10==goal_x&&list[0].y ==goal_y){
+	else if(list[0].x==goal_x&&list[0].y ==goal_y&&directionind==4){
 		//alert("aya");
 		insertfirst(new snake(list[0].x-10,list[0].y));
+			
 			cont.fillRect(list[0].x,list[0].y,10,10);
 			sc = sc + 10;
-	s.innerHTML = sc;
+			s.innerHTML = sc;
 			goal();
 
 	}
-	else if(list[0].x==goal_x&&list[0].y+10 ==goal_y){
+	else if(list[0].x==goal_x&&list[0].y ==goal_y&&directionind==2){
 		//alert("aya");
 		insertfirst(new snake(list[0].x,list[0].y+10));
+			
 			cont.fillRect(list[0].x,list[0].y,10,10);
 			sc = sc + 10;
-	s.innerHTML = sc;
+			s.innerHTML = sc;
 			goal();
 
 	}
-	else if(list[0].x==goal_x&&list[0].y-10==goal_y){
+	else if(list[0].x==goal_x&&list[0].y==goal_y&&directionind==1){
 		//alert("aya");
 		insertfirst(new snake(list[0].x,list[0].y-10));
+			
 			cont.fillRect(list[0].x,list[0].y,10,10);
 			sc = sc + 10;
-	s.innerHTML = sc;
+			s.innerHTML = sc;
 			goal();
 
 	}
@@ -162,6 +185,7 @@ function setting(){
 }
 
 function movedown(){
+	directionind= 2;
 	cont.clearRect(list[0].x,list[0].y,10,10);
 	var px = list[0].x;
 	var py = list[0].y;
@@ -172,6 +196,7 @@ function movedown(){
 }
 
 function moveup(){
+	directionind=1;
 	cont.clearRect(list[0].x,list[0].y,10,10);
 	var px = list[0].x;
 	var py = list[0].y;
@@ -183,6 +208,7 @@ function moveup(){
 }
 
 function moveleft(){
+	directionind = 4;
 	cont.clearRect(list[0].x,list[0].y,10,10);
 	var px = list[0].x;
 	var py = list[0].y;
@@ -195,29 +221,29 @@ function moveleft(){
 
 
 
-document.onkeydown = function() {
+window.onkeydown = function() {
 switch (window.event.keyCode) {
 case 37:
 {
 	clearInterval(moving);
-moving = setInterval(moveleft,300);
+moving = setInterval(moveleft,sp);
 }
 break;
 case 38:
 {
 	clearInterval(moving);
-moving = setInterval(moveup,300);
+moving = setInterval(moveup,sp);
 }
 break;
 case 39:
 {
 	clearInterval(moving);
-moving = setInterval(move_right,300);
+moving = setInterval(move_right,sp);
 } 
 break;
 case 40:{
 	clearInterval(moving);
-moving = setInterval(movedown,300);
+moving = setInterval(movedown,sp);
 }
 break;
 }
