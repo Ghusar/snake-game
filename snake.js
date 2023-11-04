@@ -250,7 +250,10 @@ function moveleft(){
 
 
 
-window.onkeydown = function() {
+window.onkeydown = function(e) {
+e.preventDefault();
+e.stopPropogation();
+
 switch (window.event.keyCode) {
 case 37:
 {
