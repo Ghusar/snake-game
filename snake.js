@@ -252,7 +252,7 @@ function moveleft(){
 
 window.onkeydown = function(e) {
 e.preventDefault();
-e.stopPropogation();
+e.stopPropagation();
 
 switch (window.event.keyCode) {
 case 37:
